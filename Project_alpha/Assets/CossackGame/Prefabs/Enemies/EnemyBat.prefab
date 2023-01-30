@@ -160,3 +160,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyData: {fileID: 11400000, guid: ec58025f36cdf2a439c3390a6d5d2757, type: 2}
+  _blinkMaterial: {fileID: 2100000, guid: 1d5a2576f4400b34689eafd55b4c16c6, type: 2}

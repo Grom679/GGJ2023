@@ -16,4 +16,4 @@ MonoBehaviour:
   <Damage>k__BackingField: 5
   <Speed>k__BackingField: 10
   <CooldownDuration>k__BackingField: 2
-  <Pierce>k__BackingField: 0
+  <Pierce>k__BackingField: 1
