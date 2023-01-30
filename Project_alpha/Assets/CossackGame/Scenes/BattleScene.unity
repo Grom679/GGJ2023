@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 1176054497}
   - component: {fileID: 1176054496}
   - component: {fileID: 1176054495}
+  - component: {fileID: 1176054502}
   - component: {fileID: 1176054499}
   - component: {fileID: 1176054500}
   - component: {fileID: 1176054501}
@@ -371,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94da8da1bb7ea6a4d845e3a46ce6fbd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  _playerData: {fileID: 11400000, guid: 440a908913d2b334187ab5576913fddb, type: 2}
 --- !u!114 &1176054500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +405,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1176054502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176054494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 300313ba7ba55fe4c9dee572636ac5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerData: {fileID: 11400000, guid: 440a908913d2b334187ab5576913fddb, type: 2}
+  _experience: 0
+  _level: 1
+  _experienceCap: 0
+  _levelRanges:
+  - startLevel: 1
+    endLevel: 2
+    experienceCapIncrease: 5
+  - startLevel: 3
+    endLevel: 20
+    experienceCapIncrease: 10
+  - startLevel: 21
+    endLevel: 40
+    experienceCapIncrease: 13
+  - startLevel: 41
+    endLevel: 1000
+    experienceCapIncrease: 16
 --- !u!1 &1648536284
 GameObject:
   m_ObjectHideFlags: 0

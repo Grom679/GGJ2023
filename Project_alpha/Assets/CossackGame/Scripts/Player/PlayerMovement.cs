@@ -16,7 +16,7 @@ namespace Player
 
         #region Editor Fields
         [SerializeField]
-        private float _moveSpeed;
+        private PlayerScriptableObject _playerData;
         #endregion
 
         #region Fields
@@ -76,8 +76,8 @@ namespace Player
 
         private void Move()
         {
-            _velocityVector.x = _movementDirection.x * _moveSpeed;
-            _velocityVector.y = _movementDirection.y * _moveSpeed;
+            _velocityVector.x = _movementDirection.x * _playerData.Speed;
+            _velocityVector.y = _movementDirection.y * _playerData.Speed;
 
             _rigidbody.velocity = _velocityVector;
         }
