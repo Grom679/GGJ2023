@@ -8,7 +8,7 @@ namespace Enemy
     {
         #region Editor Fields
         [SerializeField]
-        private float _speed;
+        private EnemyScriptableObject _enemyData;
         #endregion
 
         #region Fields
@@ -23,7 +23,7 @@ namespace Enemy
                 return;
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, _playerTarget.position, _speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _playerTarget.position, _enemyData.Speed * Time.deltaTime);
         }
         #endregion
 

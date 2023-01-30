@@ -16,7 +16,7 @@ namespace Enemy
         #region Unity Callbacks
         private void Start()
         {
-            Instantiate(_enemies[0], Vector3.zero, Quaternion.identity).SetTarget(_player);
+            Instantiate(_enemies[0], Vector2.one, Quaternion.identity).SetTarget(_player);
         }
         #endregion
     }

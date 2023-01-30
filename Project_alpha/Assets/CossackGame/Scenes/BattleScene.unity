@@ -172,11 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36716c40a9b931f46b18d7088977d0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 1736759797942578028, guid: e9b970951ed70b54d8fa9d5fd081ca59, type: 3}
-  _damage: 0
-  _speed: 10
-  _cooldownDuration: 2
-  _pierce: 0
+  _weaponData: {fileID: 11400000, guid: 24c178a37073f104f8119c3774572fcc, type: 2}
   _player: {fileID: 1176054499}
 --- !u!1 &1032624549
 GameObject:
@@ -452,11 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4bc0b8af64a354c932c22fbdb13da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 5518822779711044728, guid: 75e3c6923157d5e41a7115adf90fa871, type: 3}
-  _damage: 0
-  _speed: 0
-  _cooldownDuration: 3
-  _pierce: 0
+  _weaponData: {fileID: 11400000, guid: 2619dc3bd6e93724fb2395fa1eef2f77, type: 2}
   _player: {fileID: 1176054499}
 --- !u!1 &2103111718
 GameObject:

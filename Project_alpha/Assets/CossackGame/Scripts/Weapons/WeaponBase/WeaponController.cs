@@ -7,22 +7,10 @@ namespace Weapon
 {
     public class WeaponController : MonoBehaviour
     {
-        #region Properties
-        public float Speed => _speed;
-        #endregion
-
         #region Editor Fields
         [Header("Stats")]
         [SerializeField]
-        protected GameObject _prefab;
-        [SerializeField]
-        protected float _damage;
-        [SerializeField]
-        protected float _speed;
-        [SerializeField]
-        protected float _cooldownDuration;
-        [SerializeField]
-        protected int _pierce;
+        protected WeaponScriptableObject _weaponData;
 
         [Header("Player")]
         [SerializeField]
@@ -36,7 +24,7 @@ namespace Weapon
         #region Unity Callbacks
         protected virtual void Start()
         {
-            _coolDown = _cooldownDuration;
+            _coolDown = _weaponData.CooldownDuration;
         }
 
         protected virtual void Update()
@@ -53,7 +41,7 @@ namespace Weapon
         #region Methods
         protected virtual void Attack()
         {
-            _coolDown = _cooldownDuration;
+            _coolDown = _weaponData.CooldownDuration;
 
 
         }

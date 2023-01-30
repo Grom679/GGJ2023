@@ -20,7 +20,7 @@ namespace Weapon
         {
             base.Attack();
 
-            GameObject knife = Instantiate(_prefab);
+            GameObject knife = Instantiate(_weaponData.Prefab);
             knife.transform.position = transform.position;
             knife.GetComponent<KnifeBehaviour>().CheckDirection(_player.LastMovementDirection);
 

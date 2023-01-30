@@ -19,7 +19,7 @@ namespace Weapon
         {
             base.Attack();
 
-            GameObject seal = Instantiate(_prefab);
+            GameObject seal = Instantiate(_weaponData.Prefab);
             seal.transform.position = transform.position;
             seal.transform.SetParent(_player.transform);
         }
