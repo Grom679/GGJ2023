@@ -7,19 +7,23 @@ namespace Player
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerMovement : MonoBehaviour
     {
+        #region Properties
+        public Vector2 MovementDirection => _movementDirection;
+        public Vector2 LastMovementDirection => _lastMovementDirection;
+        public float LastHorizontalVector => _lastHorizontalVector;
+        public float LastVerticalVector => _lastVerticalVector;
+        #endregion
+
         #region Editor Fields
         [SerializeField]
         private float _moveSpeed;
         #endregion
 
         #region Fields
-        [HideInInspector]
-        public Vector2 movementDirection = Vector2.zero;
-        [HideInInspector]
-        public float lastHorizontalVector;
-        [HideInInspector]
-        public float lastVerticalVector;
-
+        private Vector2 _movementDirection = Vector2.zero;
+        private float _lastHorizontalVector;
+        private float _lastVerticalVector;
+        private Vector2 _lastMovementDirection;
         private Rigidbody2D _rigidbody;
         private Vector2 _velocityVector = Vector2.zero;
         #endregion
@@ -28,6 +32,7 @@ namespace Player
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _lastMovementDirection = new Vector2(1f, 0f);
         }
 
         private void Update()
@@ -47,25 +52,32 @@ namespace Player
             float moveX = Input.GetAxisRaw("Horizontal");
             float moveY = Input.GetAxisRaw("Vertical");
 
-            movementDirection.x = moveX;
-            movementDirection.y = moveY;
-            movementDirection = movementDirection.normalized;
+            _movementDirection.x = moveX;
+            _movementDirection.y = moveY;
+            _movementDirection = _movementDirection.normalized;
 
-            if(movementDirection.x != 0)
+            if(_movementDirection.x != 0)
             {
-                lastHorizontalVector = movementDirection.x;
+                _lastHorizontalVector = _movementDirection.x;
+                _lastMovementDirection = new Vector2(_lastHorizontalVector, 0f);
             }
 
-            if(movementDirection.y != 0)
+            if(_movementDirection.y != 0)
             {
-                lastVerticalVector = movementDirection.y;
+                _lastVerticalVector = _movementDirection.y;
+                _lastMovementDirection = new Vector2(0f, _lastVerticalVector);
+            }
+
+            if(_movementDirection.x != 0 && _movementDirection.y != 0)
+            {
+                _lastMovementDirection = new Vector2(_lastHorizontalVector, _lastVerticalVector);
             }
         }
 
         private void Move()
         {
-            _velocityVector.x = movementDirection.x * _moveSpeed;
-            _velocityVector.y = movementDirection.y * _moveSpeed;
+            _velocityVector.x = _movementDirection.x * _moveSpeed;
+            _velocityVector.y = _movementDirection.y * _moveSpeed;
 
             _rigidbody.velocity = _velocityVector;
         }

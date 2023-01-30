@@ -22,7 +22,7 @@ namespace Player
 
         private void Update()
         {
-            if(_playerMovement.movementDirection.x != 0 || _playerMovement.movementDirection.y != 0)
+            if(_playerMovement.MovementDirection.x != 0 || _playerMovement.MovementDirection.y != 0)
             {
                 _animator.SetBool("Move", true);
                 
@@ -38,7 +38,7 @@ namespace Player
         #region Methods
         private void CheckSpriteDirection()
         {
-            if(_playerMovement.lastHorizontalVector < 0)
+            if(_playerMovement.LastHorizontalVector < 0)
             {
                 _renderer.flipX = true;
             }

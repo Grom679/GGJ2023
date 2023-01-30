@@ -19,7 +19,6 @@ namespace Maps
         }
         #endregion
 
-
         #region Editor Fields
         [SerializeField]
         private List<GameObject> _mapChunks;
@@ -72,7 +71,7 @@ namespace Maps
                 return;
             }
 
-            if (_movement.movementDirection.x > 0 && _movement.movementDirection.y == 0)
+            if (_movement.MovementDirection.x > 0 && _movement.MovementDirection.y == 0)
             {
                 if(!Physics2D.OverlapCircle(currentChunk.Right.position, _chunkRadius, _terrainMask))
                 {
@@ -80,7 +79,7 @@ namespace Maps
                     SpawnChunk();
                 }
             }
-            else if (_movement.movementDirection.x < 0 && _movement.movementDirection.y == 0)
+            else if (_movement.MovementDirection.x < 0 && _movement.MovementDirection.y == 0)
             {
                 if (!Physics2D.OverlapCircle(currentChunk.Left.position, _chunkRadius, _terrainMask))
                 {
@@ -88,7 +87,7 @@ namespace Maps
                     SpawnChunk();
                 }
             }
-            else if (_movement.movementDirection.x == 0 && _movement.movementDirection.y > 0)
+            else if (_movement.MovementDirection.x == 0 && _movement.MovementDirection.y > 0)
             {
                 if (!Physics2D.OverlapCircle(currentChunk.Up.position, _chunkRadius, _terrainMask))
                 {
@@ -96,7 +95,7 @@ namespace Maps
                     SpawnChunk();
                 }
             }
-            else if (_movement.movementDirection.x == 0 && _movement.movementDirection.y < 0)
+            else if (_movement.MovementDirection.x == 0 && _movement.MovementDirection.y < 0)
             {
                 if (!Physics2D.OverlapCircle(currentChunk.Down.position, _chunkRadius, _terrainMask))
                 {
@@ -104,7 +103,7 @@ namespace Maps
                     SpawnChunk();
                 }
             }
-            else if (_movement.movementDirection.x > 0 && _movement.movementDirection.y > 0)
+            else if (_movement.MovementDirection.x > 0 && _movement.MovementDirection.y > 0)
             {
                 if (!Physics2D.OverlapCircle(currentChunk.RightUp.position, _chunkRadius, _terrainMask))
                 {
@@ -112,7 +111,7 @@ namespace Maps
                     SpawnChunk();
                 }
             }
-            else if (_movement.movementDirection.x > 0 && _movement.movementDirection.y < 0)
+            else if (_movement.MovementDirection.x > 0 && _movement.MovementDirection.y < 0)
             {
                 if (!Physics2D.OverlapCircle(currentChunk.RightDown.position, _chunkRadius, _terrainMask))
                 {
@@ -120,7 +119,7 @@ namespace Maps
                     SpawnChunk();
                 }
             }
-            else if (_movement.movementDirection.x < 0 && _movement.movementDirection.y > 0)
+            else if (_movement.MovementDirection.x < 0 && _movement.MovementDirection.y > 0)
             {
                 if (!Physics2D.OverlapCircle(currentChunk.LeftUp.position, _chunkRadius, _terrainMask))
                 {
@@ -128,7 +127,7 @@ namespace Maps
                     SpawnChunk();
                 }
             }
-            else if (_movement.movementDirection.x < 0 && _movement.movementDirection.y < 0)
+            else if (_movement.MovementDirection.x < 0 && _movement.MovementDirection.y < 0)
             {
                 if (!Physics2D.OverlapCircle(currentChunk.LeftDown.position, _chunkRadius, _terrainMask))
                 {

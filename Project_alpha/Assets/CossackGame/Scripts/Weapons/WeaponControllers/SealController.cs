@@ -4,13 +4,12 @@ using UnityEngine;
 
 namespace Weapon
 {
-    public class KnifeController : WeaponController
+    public class SealController : WeaponController
     {
         #region Unity Callbacks
         protected override void Start()
         {
             base.Start();
-
 
         }
         #endregion
@@ -20,10 +19,9 @@ namespace Weapon
         {
             base.Attack();
 
-            GameObject knife = Instantiate(_prefab);
-            knife.transform.position = transform.position;
-            knife.GetComponent<KnifeBehaviour>().CheckDirection(_player.movementDirection);
-
+            GameObject seal = Instantiate(_prefab);
+            seal.transform.position = transform.position;
+            seal.transform.SetParent(_player.transform);
         }
         #endregion
     }
