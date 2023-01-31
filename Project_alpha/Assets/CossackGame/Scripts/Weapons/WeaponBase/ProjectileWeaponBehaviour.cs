@@ -1,4 +1,5 @@
 using Enemy;
+using Maps;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,6 +47,15 @@ namespace Weapon
                 states.TakeDamage(_currentDamage);
 
                 ReducePierce();
+            }
+            else if(collision.CompareTag("Prop"))
+            {
+                if(collision.TryGetComponent(out BreakableProps prop))
+                {
+                    prop.TakeDamage(_currentDamage);
+
+                    ReducePierce();
+                }
             }
         }
         #endregion

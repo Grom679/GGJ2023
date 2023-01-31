@@ -31,6 +31,8 @@ namespace Player
         private int _experienceCap;
         [SerializeField]
         private List<LevelRange> _levelRanges;
+        [SerializeField]
+        private float _invincibilityDuration;
         #endregion
 
         #region Fields
@@ -39,6 +41,8 @@ namespace Player
         private float _currentRecovery;
         private float _currentMight;
         private float _currentProjectTileSpeed;
+        private float _invincinility;
+        private bool _isInvincible;
         #endregion
 
         #region Unity CallBacks
@@ -55,6 +59,18 @@ namespace Player
         {
             _experienceCap = _levelRanges[0].experienceCapIncrease;
         }
+
+        private void Update()
+        {
+            if(_invincinility <= 0 && _isInvincible)
+            {
+                _isInvincible = false;
+            }
+            else if(_invincinility > 0)
+            {
+                _invincinility -= Time.deltaTime;
+            }
+        }
         #endregion
 
         #region Methods
@@ -63,6 +79,43 @@ namespace Player
             _experience += amount;
 
             CheckLevelUp();
+        }
+
+        public void TakeDamage(float amount)
+        {
+            if(_isInvincible)
+            {
+                return;
+            }
+
+            _invincinility = _invincibilityDuration;
+            _isInvincible = true;
+            _currentHealth -= amount;
+
+            if(_currentHealth <= 0)
+            {
+                //To do Restart
+                Kill();
+            }
+        }
+
+        public void Heal(float amount)
+        {
+            if(_currentHealth < _playerData.MaxHealth)
+            {
+                _currentHealth += amount;
+            }
+            
+
+            if(_currentHealth > _playerData.MaxHealth)
+            {
+                _currentHealth = _playerData.MaxHealth;
+            }
+        }
+
+        private void Kill()
+        {
+            Debug.LogError("Die");
         }
 
         private void CheckLevelUp()

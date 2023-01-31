@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8173354276076262866}
   - component: {fileID: 6682071343748403199}
   - component: {fileID: -616951503656279348}
+  - component: {fileID: -2566850849427454127}
   m_Layer: 0
   m_Name: Terrain_spritesheet_16
-  m_TagString: Untagged
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,3 +112,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-2566850849427454127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3724751488681410763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856c452d6c37e9243ade581c8d19cdc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 10
+  _blinkMat: {fileID: 2100000, guid: 1d5a2576f4400b34689eafd55b4c16c6, type: 2}

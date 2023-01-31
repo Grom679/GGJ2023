@@ -1,3 +1,4 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,15 @@ namespace Enemy
 
             _renderer = GetComponent<SpriteRenderer>();
             _defaultMaterial = _renderer.material;
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if(collision.CompareTag("Player"))
+            {
+                PlayerStats player = collision.GetComponent<PlayerStats>();
+                player.TakeDamage(_enemyData.Damage);
+            }
         }
         #endregion
 

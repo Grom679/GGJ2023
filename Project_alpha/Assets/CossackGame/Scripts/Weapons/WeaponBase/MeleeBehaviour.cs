@@ -1,4 +1,5 @@
 using Enemy;
+using Maps;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,6 +41,13 @@ namespace Weapon
                 EnemyStats states = collision.GetComponent<EnemyStats>();
 
                 states.TakeDamage(_currentDamage);
+            }
+            else if (collision.CompareTag("Prop"))
+            {
+                if (collision.TryGetComponent(out BreakableProps prop))
+                {
+                    prop.TakeDamage(_currentDamage);
+                }
             }
         }
         #endregion
