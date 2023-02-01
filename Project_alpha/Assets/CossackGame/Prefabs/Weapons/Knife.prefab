@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5514831815550809132}
   - component: {fileID: 5731781154331014626}
   m_Layer: 0
-  m_Name: Cossack-Sword
+  m_Name: Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

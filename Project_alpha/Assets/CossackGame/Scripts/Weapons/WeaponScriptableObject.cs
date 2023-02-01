@@ -8,6 +8,9 @@ namespace Weapon
     public class WeaponScriptableObject : ScriptableObject
     {
         [field: SerializeField]
+        public string Name { get; private set; }
+
+        [field: SerializeField]
         public GameObject Prefab { get; private set; }
 
         [field: SerializeField]

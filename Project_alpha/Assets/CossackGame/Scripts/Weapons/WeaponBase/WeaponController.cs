@@ -7,13 +7,15 @@ namespace Weapon
 {
     public class WeaponController : MonoBehaviour
     {
+        #region Properties
+        public WeaponScriptableObject WeaponData => _weaponData;
+        #endregion
+
         #region Editor Fields
         [Header("Stats")]
         [SerializeField]
         protected WeaponScriptableObject _weaponData;
 
-        [Header("Player")]
-        [SerializeField]
         protected PlayerMovement _player;
         #endregion
 
@@ -25,6 +27,8 @@ namespace Weapon
         protected virtual void Start()
         {
             _coolDown = _weaponData.CooldownDuration;
+
+            _player = PlayerStats.Instance.gameObject.GetComponent<PlayerMovement>();
         }
 
         protected virtual void Update()

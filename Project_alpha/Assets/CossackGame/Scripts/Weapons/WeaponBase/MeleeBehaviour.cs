@@ -1,5 +1,6 @@
 using Enemy;
 using Maps;
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace Weapon
         #region Unity Callbacks
         private void Awake()
         {
-            _currentDamage = _weaponData.Damage;
+            _currentDamage = _weaponData.Damage + (_weaponData.Damage * PlayerStats.Instance.CurrentMight);
             _currentPierce = _weaponData.Pierce;
             _currentCooldownDuration = _weaponData.CooldownDuration;
         }
@@ -36,10 +37,10 @@ namespace Weapon
 
         protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.CompareTag("Enemy"))
+            if (collision.CompareTag("Enemy"))
             {
                 EnemyStats states = collision.GetComponent<EnemyStats>();
-
+                
                 states.TakeDamage(_currentDamage);
             }
             else if (collision.CompareTag("Prop"))

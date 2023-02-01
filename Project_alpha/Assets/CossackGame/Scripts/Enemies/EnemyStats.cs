@@ -66,6 +66,11 @@ namespace Enemy
 
         private void Kill()
         {
+            if(UI.HudController.Instance != null)
+            {
+                UI.HudController.Instance.UpdateEnemyCounter();
+            }
+
             Destroy(gameObject);
         }
 

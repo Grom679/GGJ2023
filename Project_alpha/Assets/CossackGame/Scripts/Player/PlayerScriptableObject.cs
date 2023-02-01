@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Weapon;
 
 namespace Player
 {
@@ -8,7 +9,7 @@ namespace Player
     public class PlayerScriptableObject : ScriptableObject
     {
         [field: SerializeField]
-        public GameObject StartingWeapon { get; private set; }
+        public WeaponController StartingWeapon { get; private set; }
 
         [field: SerializeField]
         public float MaxHealth { get; private set; }
