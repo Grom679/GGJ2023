@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 namespace UI
 {
@@ -11,6 +12,7 @@ namespace UI
     {
         #region Properties
         public static HudController Instance { get; set; }
+        public Action<float, float> OnTick { get; set; }
         #endregion
 
         #region EditorFields
@@ -22,11 +24,14 @@ namespace UI
         private TMP_Text _coinText;
         [SerializeField]
         private TMP_Text _levelText;
+        [SerializeField]
+        private TMP_Text _timerText;
         #endregion
 
         #region Fields 
         private float _enemyCount;
         private float _coinsCount;
+        private float _timer;
         #endregion
 
         #region Unity Callbacks
@@ -50,6 +55,17 @@ namespace UI
             PlayerStats.Instance.OnExperienceUpgrade += UpdateExperience;
             UpdateLevel();
             _expSlider.maxValue = 5;
+        }
+
+        private void Update()
+        {
+            _timer += Time.deltaTime;
+
+            float minutes = Mathf.Floor(_timer / 60);
+            float seconds = (_timer % 60);
+
+            OnTick?.Invoke(minutes, seconds);
+            _timerText.text = string.Format("{0}:{1}", minutes.ToString("00"), seconds.ToString("00"));
         }
         #endregion
 
