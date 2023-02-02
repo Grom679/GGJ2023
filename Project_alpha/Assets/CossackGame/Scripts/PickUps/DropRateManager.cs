@@ -20,8 +20,13 @@ namespace PickUp
         #endregion
 
         #region Unity Callbacks
-        private void OnDestroy()
+        private void OnDisable()
         {
+            if(!Application.isPlaying)
+            {
+                return;
+            }
+
             float randomNum = Random.Range(0f, 100f);
             List<Drops> possibliDrops = new List<Drops>();
 

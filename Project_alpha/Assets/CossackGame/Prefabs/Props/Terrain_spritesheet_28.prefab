@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4984478796394803244}
   - component: {fileID: 1386867418181050403}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_spritesheet_28
   m_TagString: Untagged
   m_Icon: {fileID: 0}

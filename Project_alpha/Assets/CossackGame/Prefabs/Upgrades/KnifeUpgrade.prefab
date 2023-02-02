@@ -612,6 +612,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4894946559429137170}
+        m_TargetAssemblyTypeName: Updates.BaseUpgrade, Assembly-CSharp
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &8648285561306370694
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -633,7 +645,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeData: {fileID: 11400000, guid: 432a827dbe144344b8349f0960b92cdc, type: 2}
-  _weapon: {fileID: 939063923714763136, guid: 2415904bb9c7508488ee5a5e438efe68, type: 3}
 --- !u!114 &5377178756937593376
 MonoBehaviour:
   m_ObjectHideFlags: 0

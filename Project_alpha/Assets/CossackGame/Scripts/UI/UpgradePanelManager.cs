@@ -2,6 +2,7 @@ using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Updates;
 
 namespace UI
@@ -20,6 +21,7 @@ namespace UI
         #region Fields
         private BaseUpgrade _startWeapon;
         private List<BaseUpgrade> _selectedUpgrades;
+        private List<GameObject> _createdUpgrades;
         private bool _activated;
         //to do check
         #endregion
@@ -48,8 +50,12 @@ namespace UI
             {
                 if (_upgrades[i].UpgradeData.Type == UpgradesType.Weapon)
                 {
+                    Debug.LogError("Seals2");
+
                     if (weaponManager.ActiveWeapons.Contains(_upgrades[i].UpgradeData.Weapon))
                     {
+                        Debug.LogError("Seals");
+
                         _startWeapon = _upgrades[i];
 
                         break;
@@ -67,14 +73,19 @@ namespace UI
             {
                 count = _upgrades.Count;
 
-                foreach(BaseUpgrade upgrade in _upgrades)
+                _createdUpgrades = new List<GameObject>();
+
+                foreach (BaseUpgrade upgrade in _upgrades)
                 {
-                    Instantiate(upgrade, _content);
+                    BaseUpgrade newUpgrade = Instantiate(upgrade, _content);
+                    newUpgrade.OnClick += OnUpgradeSelected;
+                    _createdUpgrades.Add(newUpgrade.gameObject);
                 }
             }
             else
             {
                 _selectedUpgrades = new List<BaseUpgrade>();
+                _createdUpgrades = new List<GameObject>();
 
                 while (_selectedUpgrades.Count < count)
                 {
@@ -88,13 +99,34 @@ namespace UI
 
                 foreach (BaseUpgrade upgrade in _selectedUpgrades)
                 {
-                    Instantiate(upgrade, _content);
+                    BaseUpgrade newUpgrade = Instantiate(upgrade, _content);
+
+                    newUpgrade.OnClick += OnUpgradeSelected;
+                    _createdUpgrades.Add(newUpgrade.gameObject);
                 }
 
                 _selectedUpgrades.Clear();
             }
         }
 
+        private void OnUpgradeSelected(BaseUpgrade upgrade)
+        {
+            for (int i = 0; i < _createdUpgrades.Count; i++)
+            {
+                Destroy(_createdUpgrades[i]);
+            }
+
+            _createdUpgrades.Clear();
+
+            if (_upgradePanel.activeSelf)
+            {
+                _upgradePanel.SetActive(false);
+            }
+
+            Time.timeScale = 1;
+            PauseManager.Instance.IsPaused = false;
+            _activated = false;
+        }
 
         private void OnLevelUpdate()
         {

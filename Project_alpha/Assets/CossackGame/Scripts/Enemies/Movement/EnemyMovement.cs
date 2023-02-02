@@ -13,9 +13,15 @@ namespace Enemy
 
         #region Fields
         private Transform _playerTarget;
+        private Rigidbody2D _rigid;
         #endregion
 
         #region Unity Callbacks
+        private void Start()
+        {
+            _rigid = GetComponent<Rigidbody2D>();
+        }
+
         private void Update()
         {
             if(_playerTarget == null)
@@ -23,7 +29,9 @@ namespace Enemy
                 return;
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, _playerTarget.position, _enemyData.Speed * Time.deltaTime);
+            Vector3 direction = (_playerTarget.position - transform.position).normalized;
+
+            _rigid.velocity = direction;
         }
         #endregion
 

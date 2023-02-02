@@ -706,7 +706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -107.477295, y: 0}
+  m_AnchoredPosition: {x: -107.47754, y: 0}
   m_SizeDelta: {x: 185.0453, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &825908237
@@ -1123,8 +1123,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1176054498}
+  _spawnRadius: 10
   _enemies:
-  - {fileID: 338257403536401024, guid: 4875d363b16d48845a71d565406f08cd, type: 3}
+  - enemy: {fileID: 338257403536401024, guid: 4875d363b16d48845a71d565406f08cd, type: 3}
+    level: 1
 --- !u!4 &1032624551
 Transform:
   m_ObjectHideFlags: 0
