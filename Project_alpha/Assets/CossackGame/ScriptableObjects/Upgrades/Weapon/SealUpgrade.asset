@@ -15,6 +15,6 @@ MonoBehaviour:
   <Type>k__BackingField: 0
   <Name>k__BackingField: Seal
   <Description>k__BackingField: Deals damage around you
-  <Icon>k__BackingField: {fileID: -1482267689, guid: 150093357a342ba4a8d5eac819a3c47f, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 9b64f18743d8e41489789159a48b3da1, type: 3}
   <Level>k__BackingField: 1
   <Weapon>k__BackingField: {fileID: 876446473755065349, guid: 7232c3829879fdb4cac3cb52bef6a74f, type: 3}
