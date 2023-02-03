@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private AudioSource _effects;
     private float musicVolume = 0;
     private void Awake()
     {
@@ -34,6 +35,11 @@ public class AudioManager : MonoBehaviour
         audioMixer.SetFloat("musicVolume", volume);
         PlayerPrefs.SetFloat("musicVolume", volume);
         PlayerPrefs.Save();
+    }
+
+    public void PlayEffect()
+    {
+        _effects.Play();
     }
     
 }

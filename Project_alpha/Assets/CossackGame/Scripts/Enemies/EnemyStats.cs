@@ -60,6 +60,11 @@ namespace Enemy
                 StopCoroutine(_blinkRoutine);
             }
 
+            if(AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEffect();
+            }
+
             _blinkRoutine = StartCoroutine(Blink());
 
             if(_currentHealth <= 0)
