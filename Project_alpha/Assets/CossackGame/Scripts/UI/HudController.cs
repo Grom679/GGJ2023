@@ -26,12 +26,17 @@ namespace UI
         private TMP_Text _levelText;
         [SerializeField]
         private TMP_Text _timerText;
+
+        [SerializeField]
+        private float _timeToWin;
         #endregion
 
         #region Fields 
         private float _enemyCount;
         private float _coinsCount;
         private float _timer;
+
+        private bool _gameEnded;
         #endregion
 
         #region Unity Callbacks
@@ -65,6 +70,13 @@ namespace UI
             float seconds = (_timer % 60);
 
             OnTick?.Invoke(minutes, seconds);
+
+            if(minutes == _timeToWin && !_gameEnded)
+            {
+                _gameEnded = true;
+                FinishGame.Instance.Finish(true);
+            }
+
             _timerText.text = string.Format("{0}:{1}", minutes.ToString("00"), seconds.ToString("00"));
         }
         #endregion

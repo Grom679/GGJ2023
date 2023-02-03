@@ -15,6 +15,6 @@ MonoBehaviour:
   <Type>k__BackingField: 1
   <Name>k__BackingField: Datling Heart
   <Description>k__BackingField: Increase max health by 15%
-  <Icon>k__BackingField: {fileID: -1823621601, guid: fd9bc73950d300e40a52d6fec33ad769, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 3f76ea8df3b95dc499d40b54dab7004d, type: 3}
   <Level>k__BackingField: 1
   <Weapon>k__BackingField: {fileID: 0}

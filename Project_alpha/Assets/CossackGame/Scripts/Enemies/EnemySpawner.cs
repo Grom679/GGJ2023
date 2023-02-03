@@ -95,7 +95,7 @@ namespace Enemy
                 }
             }
 
-            float waveCount = _currentLevel * 5;
+            float waveCount = _currentLevel * 10;
 
             for(int i = 0; i < waveCount; i++)
             {

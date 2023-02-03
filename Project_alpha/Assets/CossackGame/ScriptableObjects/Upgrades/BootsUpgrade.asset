@@ -15,6 +15,6 @@ MonoBehaviour:
   <Type>k__BackingField: 1
   <Name>k__BackingField: Boots
   <Description>k__BackingField: Increase speed by 5%
-  <Icon>k__BackingField: {fileID: -1344767018, guid: fd6204a7b5c24ae4b9d6024754f1ac33, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 009ab125d9ccbb94bb6f23332755e7d9, type: 3}
   <Level>k__BackingField: 1
   <Weapon>k__BackingField: {fileID: 0}
