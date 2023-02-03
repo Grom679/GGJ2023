@@ -45,5 +45,6 @@ public class PauseManager : MonoBehaviour
                 Debug.LogError("canvas == null");
             }
         }
+        
     }
 }
