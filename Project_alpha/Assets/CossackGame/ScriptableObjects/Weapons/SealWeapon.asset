@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425af5294a965e745ae947304863f0d1, type: 3}
   m_Name: SealWeapon
   m_EditorClassIdentifier: 
+  <Name>k__BackingField: Seal
   <Prefab>k__BackingField: {fileID: 5518822779711044728, guid: 75e3c6923157d5e41a7115adf90fa871, type: 3}
   <Damage>k__BackingField: 3
   <Speed>k__BackingField: 0

@@ -14,7 +14,7 @@ namespace Weapon
 
         private void Update()
         {
-            transform.position += _direction * _weaponData.Speed * Time.deltaTime;
+            transform.position += _direction * _currentSpeed * Time.deltaTime;
         }
         #endregion
     }

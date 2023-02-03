@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee5bc79cdb4ce74397499f2f1e29845, type: 3}
   m_Name: StandartPlayer
   m_EditorClassIdentifier: 
-  <StartingWeapon>k__BackingField: {fileID: 1736759797942578028, guid: e9b970951ed70b54d8fa9d5fd081ca59, type: 3}
+  <StartingWeapon>k__BackingField: {fileID: 939063923714763136, guid: 2415904bb9c7508488ee5a5e438efe68, type: 3}
   <MaxHealth>k__BackingField: 100
   <Recovery>k__BackingField: 0
   <Speed>k__BackingField: 5

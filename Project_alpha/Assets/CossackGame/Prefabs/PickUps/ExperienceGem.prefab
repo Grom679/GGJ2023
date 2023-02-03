@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4077207998904291070}
   - component: {fileID: 7311201351544302879}
   - component: {fileID: 1977788966596328552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ExperienceGem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,4 +114,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41851408d8b175948b36c8adeeacd870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _experience: 3
+  _experience: 6

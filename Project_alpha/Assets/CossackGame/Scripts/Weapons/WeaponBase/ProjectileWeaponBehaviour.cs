@@ -1,5 +1,6 @@
 using Enemy;
 using Maps;
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,8 +28,8 @@ namespace Weapon
         #region Unity Callbacks
         private void Awake()
         {
-            _currentDamage = _weaponData.Damage;
-            _currentSpeed = _weaponData.Speed;
+            _currentDamage = _weaponData.Damage + (_weaponData.Damage * PlayerStats.Instance.CurrentMight);
+            _currentSpeed = _weaponData.Speed + (_weaponData.Speed * PlayerStats.Instance.CurrentProjectTileSpeed);
             _currentPierce = _weaponData.Pierce;
             _currentCooldownDuration = _weaponData.CooldownDuration;
         }

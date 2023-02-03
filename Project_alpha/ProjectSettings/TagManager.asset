@@ -14,11 +14,11 @@ TagManager:
   - Water
   - UI
   - Terrain
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Props
+  - Enemy
+  - PickUps
+  - Weapon
+  - EnemyCircle
   - 
   - 
   - 

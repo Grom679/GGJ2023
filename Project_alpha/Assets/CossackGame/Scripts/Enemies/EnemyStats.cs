@@ -7,6 +7,10 @@ namespace Enemy
 {
     public class EnemyStats : MonoBehaviour
     {
+        #region Properties
+        public System.Action OnDeath { get; set; }
+        #endregion
+
         #region Editor Fields
         [SerializeField]
         private EnemyScriptableObject _enemyData;
@@ -36,11 +40,11 @@ namespace Enemy
             _defaultMaterial = _renderer.material;
         }
 
-        private void OnTriggerStay2D(Collider2D collision)
+        private void OnCollisionStay2D(Collision2D collision)
         {
-            if(collision.CompareTag("Player"))
+            if (collision.gameObject.CompareTag("Player"))
             {
-                PlayerStats player = collision.GetComponent<PlayerStats>();
+                PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
                 player.TakeDamage(_enemyData.Damage);
             }
         }
@@ -66,6 +70,13 @@ namespace Enemy
 
         private void Kill()
         {
+            if(UI.HudController.Instance != null)
+            {
+                UI.HudController.Instance.UpdateEnemyCounter();
+            }
+
+            OnDeath?.Invoke();
+
             Destroy(gameObject);
         }
 

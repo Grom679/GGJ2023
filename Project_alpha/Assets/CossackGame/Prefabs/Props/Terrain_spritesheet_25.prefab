@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2963075025123239753}
   - component: {fileID: 2429419114370259065}
   - component: {fileID: -45974186138874462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_spritesheet_25
   m_TagString: Prop
   m_Icon: {fileID: 0}

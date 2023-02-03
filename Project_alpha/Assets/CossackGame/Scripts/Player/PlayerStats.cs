@@ -15,9 +15,30 @@ namespace Player
         }
 
         #region Properties
+        public static PlayerStats Instance { get; set; }
+
+        public PlayerScriptableObject PlayerData => _playerData;
+        public System.Action OnExperienceUpgrade { get; set; }
+        public System.Action OnLevelUpgrade { get; set; }
+        public System.Action OnHealthChanges { get; set; }
+
+        public float CurrentHealth { get; private set; }
+        public float AdditionalHealth => _maxHealthAdditional;
+        public float CurrentSpeed { get; private set; }
+        public float CurrentRecovery { get; private set; }
+        public float CurrentMight { get; private set; }
+        public float CurrentProjectTileSpeed { get; private set; }
+
         public int Experience => _experience;
         public int Level => _level;
         public int ExperienceCap => _experienceCap;
+        #endregion
+
+        #region Fields
+        private float _invincinility;
+        private bool _isInvincible;
+
+        private float _maxHealthAdditional;
         #endregion
 
         #region Editor Feilds
@@ -33,31 +54,32 @@ namespace Player
         private List<LevelRange> _levelRanges;
         [SerializeField]
         private float _invincibilityDuration;
-        #endregion
-
-        #region Fields
-        private float _currentHealth;
-        private float _currentSpeed;
-        private float _currentRecovery;
-        private float _currentMight;
-        private float _currentProjectTileSpeed;
-        private float _invincinility;
-        private bool _isInvincible;
+        [SerializeField]
+        private Transform _hpBar;
         #endregion
 
         #region Unity CallBacks
         private void Awake()
         {
-            _currentHealth = _playerData.MaxHealth;
-            _currentMight = _playerData.Might;
-            _currentProjectTileSpeed = _playerData.ProjectileSpeed;
-            _currentRecovery = _playerData.Recovery;
-            _currentSpeed = _playerData.Speed;
+            if(Instance != null)
+            {
+                Instance = null;
+            }
+
+            Instance = this;
+
+            CurrentHealth = _playerData.MaxHealth;
+            CurrentMight = _playerData.Might;
+            CurrentProjectTileSpeed = _playerData.ProjectileSpeed;
+            CurrentRecovery = _playerData.Recovery;
+            CurrentSpeed = _playerData.Speed;
         }
 
         private void Start()
         {
             _experienceCap = _levelRanges[0].experienceCapIncrease;
+            OnHealthChanges += ChangeBarValue;
+            StartCoroutine(RecoveryTick());
         }
 
         private void Update()
@@ -78,7 +100,36 @@ namespace Player
         {
             _experience += amount;
 
+            OnExperienceUpgrade?.Invoke();
+
             CheckLevelUp();
+        }
+
+        public void ChangeMaxHealth(float amount)
+        {
+            _maxHealthAdditional += amount;
+
+            OnHealthChanges?.Invoke();
+        }
+
+        public void ChangeSpeed(float amount)
+        {
+            CurrentSpeed += amount;
+        }
+
+        public void ChangeMight(float amount)
+        {
+            CurrentMight += amount;
+        }
+
+        public void ChangeRecovery(float amount)
+        {
+            CurrentRecovery += amount;
+        }
+
+        public void ChangeTileSpeed(float amount)
+        {
+            CurrentProjectTileSpeed += amount;
         }
 
         public void TakeDamage(float amount)
@@ -88,11 +139,12 @@ namespace Player
                 return;
             }
 
+            OnHealthChanges?.Invoke();
             _invincinility = _invincibilityDuration;
             _isInvincible = true;
-            _currentHealth -= amount;
+            CurrentHealth -= amount;
 
-            if(_currentHealth <= 0)
+            if(CurrentHealth <= 0)
             {
                 //To do Restart
                 Kill();
@@ -101,16 +153,28 @@ namespace Player
 
         public void Heal(float amount)
         {
-            if(_currentHealth < _playerData.MaxHealth)
+            if(CurrentHealth < (_playerData.MaxHealth + _maxHealthAdditional))
             {
-                _currentHealth += amount;
+                CurrentHealth += amount;
             }
             
 
-            if(_currentHealth > _playerData.MaxHealth)
+            if(CurrentHealth > (_playerData.MaxHealth + _maxHealthAdditional))
             {
-                _currentHealth = _playerData.MaxHealth;
+                CurrentHealth = (_playerData.MaxHealth + _maxHealthAdditional);
             }
+
+            OnHealthChanges?.Invoke();
+        }
+
+        private void ChangeBarValue()
+        {
+            float xValue = CurrentHealth / (PlayerData.MaxHealth + AdditionalHealth);
+
+            if(xValue >- 0)
+            {
+                _hpBar.localScale = new Vector3(xValue, 1f, 1f);
+            }  
         }
 
         private void Kill()
@@ -138,7 +202,18 @@ namespace Player
                 }
 
                 _experienceCap += capIncrease;
+
+                OnLevelUpgrade?.Invoke();
             }
+        }
+
+        private IEnumerator RecoveryTick()
+        {
+            yield return new WaitForSeconds(1f);
+
+            CurrentHealth += CurrentRecovery;
+
+            StartCoroutine(RecoveryTick());
         }
         #endregion
     }
