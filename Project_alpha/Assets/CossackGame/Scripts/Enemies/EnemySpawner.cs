@@ -22,10 +22,15 @@ namespace Enemy
         private float _spawnRadius;
         [SerializeField]
         private List<SpawnedEnemy> _enemies;
+        [SerializeField]
+        private SpawnedEnemy _circleEnemy;
+        [SerializeField]
+        private Transform _circleCenter;
         #endregion
 
         #region Fields
         private float _currentMinute = 0;
+        private float _currentMinuteCircle = 0;
         private float _currentLevel  = 1;
 
         private float _enemyCount = 0;
@@ -45,10 +50,31 @@ namespace Enemy
         #region Methods
         private void OnTick(float minutes, float secundes)
         {
-            if(minutes != _currentMinute)
+            _currentMinute++;
+
+            if(_currentMinuteCircle != minutes)
             {
-                _currentMinute = minutes;
+                _currentMinuteCircle = minutes;
+                SpawnCircle();
+            }
+
+            if (_currentMinute == 3000)
+            {
                 SpawnWave();
+                _currentMinute = 0;
+            }
+        }
+
+        private void SpawnCircle()
+        {
+            _circleCenter.position = _player.position;
+
+            for (int i = 0; i < 100; i++)
+            {
+                int a = 360 / 100 * i;
+                Vector3 pos = RandomCircle(_circleCenter.position, 15.0f, a);
+                EnemyMovement enemy = Instantiate(_circleEnemy.enemy, pos, Quaternion.identity);
+                enemy.SetTarget(_circleCenter);
             }
         }
 
@@ -69,7 +95,7 @@ namespace Enemy
                 }
             }
 
-            float waveCount = _currentLevel * 10;
+            float waveCount = _currentLevel * 5;
 
             for(int i = 0; i < waveCount; i++)
             {
@@ -83,6 +109,7 @@ namespace Enemy
                 Vector3 position = ChooseSpawnPosition();
 
                 EnemyMovement enemy = Instantiate(_enemies[random].enemy, position, Quaternion.identity);
+                enemy.transform.position = position;
 
                 enemy.SetTarget(_player);
 
@@ -93,6 +120,17 @@ namespace Enemy
 
             _selectedEnemies.Clear();
         }
+
+        private Vector3 RandomCircle(Vector3 center, float radius, int a)
+        {
+            float ang = a;
+            Vector3 pos;
+            pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+            pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+            pos.z = center.z;
+            return pos;
+        }
+
 
         private Vector3 ChooseSpawnPosition()
         {

@@ -50,12 +50,8 @@ namespace UI
             {
                 if (_upgrades[i].UpgradeData.Type == UpgradesType.Weapon)
                 {
-                    Debug.LogError("Seals2");
-
                     if (weaponManager.ActiveWeapons.Contains(_upgrades[i].UpgradeData.Weapon))
                     {
-                        Debug.LogError("Seals");
-
                         _startWeapon = _upgrades[i];
 
                         break;

@@ -20,8 +20,10 @@ namespace Player
         public PlayerScriptableObject PlayerData => _playerData;
         public System.Action OnExperienceUpgrade { get; set; }
         public System.Action OnLevelUpgrade { get; set; }
+        public System.Action OnHealthChanges { get; set; }
 
         public float CurrentHealth { get; private set; }
+        public float AdditionalHealth => _maxHealthAdditional;
         public float CurrentSpeed { get; private set; }
         public float CurrentRecovery { get; private set; }
         public float CurrentMight { get; private set; }
@@ -35,6 +37,8 @@ namespace Player
         #region Fields
         private float _invincinility;
         private bool _isInvincible;
+
+        private float _maxHealthAdditional;
         #endregion
 
         #region Editor Feilds
@@ -50,6 +54,8 @@ namespace Player
         private List<LevelRange> _levelRanges;
         [SerializeField]
         private float _invincibilityDuration;
+        [SerializeField]
+        private Transform _hpBar;
         #endregion
 
         #region Unity CallBacks
@@ -72,7 +78,7 @@ namespace Player
         private void Start()
         {
             _experienceCap = _levelRanges[0].experienceCapIncrease;
-
+            OnHealthChanges += ChangeBarValue;
             StartCoroutine(RecoveryTick());
         }
 
@@ -97,6 +103,13 @@ namespace Player
             OnExperienceUpgrade?.Invoke();
 
             CheckLevelUp();
+        }
+
+        public void ChangeMaxHealth(float amount)
+        {
+            _maxHealthAdditional += amount;
+
+            OnHealthChanges?.Invoke();
         }
 
         public void ChangeSpeed(float amount)
@@ -126,6 +139,7 @@ namespace Player
                 return;
             }
 
+            OnHealthChanges?.Invoke();
             _invincinility = _invincibilityDuration;
             _isInvincible = true;
             CurrentHealth -= amount;
@@ -139,16 +153,28 @@ namespace Player
 
         public void Heal(float amount)
         {
-            if(CurrentHealth < _playerData.MaxHealth)
+            if(CurrentHealth < (_playerData.MaxHealth + _maxHealthAdditional))
             {
                 CurrentHealth += amount;
             }
             
 
-            if(CurrentHealth > _playerData.MaxHealth)
+            if(CurrentHealth > (_playerData.MaxHealth + _maxHealthAdditional))
             {
-                CurrentHealth = _playerData.MaxHealth;
+                CurrentHealth = (_playerData.MaxHealth + _maxHealthAdditional);
             }
+
+            OnHealthChanges?.Invoke();
+        }
+
+        private void ChangeBarValue()
+        {
+            float xValue = CurrentHealth / (PlayerData.MaxHealth + AdditionalHealth);
+
+            if(xValue >- 0)
+            {
+                _hpBar.localScale = new Vector3(xValue, 1f, 1f);
+            }  
         }
 
         private void Kill()

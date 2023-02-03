@@ -76,6 +76,13 @@ namespace UI
             _enemyText.text = _enemyCount.ToString();
         }
 
+        public void UpdateCoins(float coins)
+        {
+            _coinsCount += coins;
+
+            _coinText.text = _coinsCount.ToString();
+        }
+
         private void UpdateExperience()
         {
             _expSlider.value = PlayerStats.Instance.Experience;

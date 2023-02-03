@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1063961148878934970}
   - component: {fileID: 235784402059176908}
   - component: {fileID: -3139238256062637329}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SealProtection
   m_TagString: Untagged
   m_Icon: {fileID: 0}

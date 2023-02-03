@@ -10,7 +10,8 @@ namespace Updates
         Speed,
         Recovery,
         Might,
-        ProjectileSpeed
+        ProjectileSpeed,
+        Health
     }
 
     [System.Serializable]
@@ -24,26 +25,32 @@ namespace Updates
     {
         #region Editor Fields
         [SerializeField]
-        private ItemStats _item;
+        private List<ItemStats> _items;
         #endregion
 
         #region Methods
         public void UpdateStats()
         {
-            switch(_item.type)
+            foreach(ItemStats item in _items)
             {
-                case BoostType.Speed:
-                    PlayerStats.Instance.ChangeSpeed(PlayerStats.Instance.CurrentSpeed * _item.value); //value
-                    break;
-                case BoostType.Recovery:
-                    PlayerStats.Instance.ChangeRecovery(_item.value); //n
-                    break;
-                case BoostType.Might:
-                    PlayerStats.Instance.ChangeMight(_item.value); //%
-                    break;
-                case BoostType.ProjectileSpeed:
-                    PlayerStats.Instance.ChangeTileSpeed(_item.value); //%
-                    break;
+                switch (item.type)
+                {
+                    case BoostType.Speed:
+                        PlayerStats.Instance.ChangeSpeed(PlayerStats.Instance.CurrentSpeed * item.value); //value
+                        break;
+                    case BoostType.Recovery:
+                        PlayerStats.Instance.ChangeRecovery(item.value); //n
+                        break;
+                    case BoostType.Might:
+                        PlayerStats.Instance.ChangeMight(item.value); //%
+                        break;
+                    case BoostType.ProjectileSpeed:
+                        PlayerStats.Instance.ChangeTileSpeed(item.value); //%
+                        break;
+                    case BoostType.Health:
+                        PlayerStats.Instance.ChangeMaxHealth((PlayerStats.Instance.PlayerData.MaxHealth + PlayerStats.Instance.AdditionalHealth) * item.value); //%
+                        break;
+                }
             }
         }
         #endregion

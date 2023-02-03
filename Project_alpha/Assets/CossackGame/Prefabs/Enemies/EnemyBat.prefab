@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyData: {fileID: 11400000, guid: ec58025f36cdf2a439c3390a6d5d2757, type: 2}
+  _isTmp: 0
 --- !u!114 &3098394933377442751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +179,9 @@ MonoBehaviour:
   _drops:
   - name: Blue Gem
     prefab: {fileID: 3729310422366522269, guid: 793d910254b20e745918ba825e72906a, type: 3}
+    dropRate: 50
+  - name: Coin
+    prefab: {fileID: 3729310422366522269, guid: 98645cad740c7e846ae73f26960dbaa7, type: 3}
     dropRate: 50
 --- !u!50 &-412157650316333956
 Rigidbody2D:
