@@ -15,6 +15,6 @@ MonoBehaviour:
   <Type>k__BackingField: 1
   <Name>k__BackingField: Gridstone
   <Description>k__BackingField: Increase damage by 30%, decrease health by 20%
-  <Icon>k__BackingField: {fileID: -1344767018, guid: fd6204a7b5c24ae4b9d6024754f1ac33, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 226feefff339e434ea28432d062b144e, type: 3}
   <Level>k__BackingField: 1
   <Weapon>k__BackingField: {fileID: 0}
