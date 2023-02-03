@@ -15,6 +15,6 @@ MonoBehaviour:
   <Type>k__BackingField: 1
   <Name>k__BackingField: Sultans's Letter
   <Description>k__BackingField: Increase health by 30%, decrease speed by 15%
-  <Icon>k__BackingField: {fileID: -1344767018, guid: fd6204a7b5c24ae4b9d6024754f1ac33, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 058583a78ee21a54bae0f853fdd095b7, type: 3}
   <Level>k__BackingField: 1
   <Weapon>k__BackingField: {fileID: 0}
