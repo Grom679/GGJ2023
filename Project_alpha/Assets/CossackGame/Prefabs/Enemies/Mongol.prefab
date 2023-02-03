@@ -162,7 +162,7 @@ MonoBehaviour:
     dropRate: 50
   - name: Coin
     prefab: {fileID: 3729310422366522269, guid: 98645cad740c7e846ae73f26960dbaa7, type: 3}
-    dropRate: 50
+    dropRate: 25
 --- !u!50 &-412157650316333956
 Rigidbody2D:
   serializedVersion: 4

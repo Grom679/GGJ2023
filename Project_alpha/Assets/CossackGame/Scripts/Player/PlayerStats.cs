@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 
 namespace Player
@@ -179,7 +180,7 @@ namespace Player
 
         private void Kill()
         {
-            Debug.LogError("Die");
+            FinishGame.Instance.Finish(false);
         }
 
         private void CheckLevelUp()
