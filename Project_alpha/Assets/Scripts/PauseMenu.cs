@@ -26,7 +26,7 @@ public class PauseMenu : MonoBehaviour
     }
     private void OnQuitButtonClicked()
     {
-        SceneManager.LoadScene(0);
+        SceneManage.Instance.OnChangeScene?.Invoke(0);
     }
 
     private void OnOptionButtonClicked()

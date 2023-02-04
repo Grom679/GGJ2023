@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
 
 public class MeinMenuPanel : MonoBehaviour
 {
@@ -38,7 +38,7 @@ public class MeinMenuPanel : MonoBehaviour
 
     private void OnStartButtonClicked()
     {
-        SceneManager.LoadScene(1);
+        SceneManage.Instance.OnChangeScene?.Invoke(1);
         Debug.Log("start clicked");
     }
 }
