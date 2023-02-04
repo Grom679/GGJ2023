@@ -13,6 +13,8 @@ public class MeinMenuPanel : MonoBehaviour
     [SerializeField] private GameObject _optionPanel;
     private void OnEnable()
     {
+        Time.timeScale = 1;
+
         _startButton.onClick.AddListener(OnStartButtonClicked);
         _optionButton.onClick.AddListener(OnOptionButtonClicked);
         _quitButton.onClick.AddListener(OnQuitButtonClicked);

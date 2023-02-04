@@ -58,7 +58,7 @@ namespace Enemy
                 SpawnCircle();
             }
 
-            if (_currentMinute == 1000)
+            if (_currentMinute == 2000)
             {
                 SpawnWave();
                 _currentMinute = 0;
