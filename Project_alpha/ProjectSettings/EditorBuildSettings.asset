@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 0455e8161e673774eaa4588e4b6288ce
   - enabled: 1
-    path: Assets/CossackGame/Scenes/BattleScene.unity
+    path: Assets/Scenes/Hub.unity
     guid: 86b258a44da9d8a47b085647521b29cc
+  - enabled: 1
+    path: Assets/CossackGame/Scenes/BattleScene.unity
+    guid: 3c9ce630dcc82df4296fa458567e810f
   m_configObjects: {}

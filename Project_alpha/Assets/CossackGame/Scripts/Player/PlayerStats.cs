@@ -74,6 +74,12 @@ namespace Player
             CurrentProjectTileSpeed = _playerData.ProjectileSpeed;
             CurrentRecovery = _playerData.Recovery;
             CurrentSpeed = _playerData.Speed;
+            
+            Debug.LogError("CurrentHealth " + CurrentHealth);
+            Debug.LogError("CurrentMight " + CurrentMight);
+            Debug.LogError("CurrentProjectTileSpeed " + CurrentProjectTileSpeed);
+            Debug.LogError("CurrentRecovery " + CurrentRecovery);
+            Debug.LogError("CurrentSpeed " + CurrentHealth);
         }
 
         private void Start()
@@ -215,6 +221,38 @@ namespace Player
             CurrentHealth += CurrentRecovery;
 
             StartCoroutine(RecoveryTick());
+        }
+
+        [ContextMenu("Cheats")]
+        private void Cheats()
+        {
+            switch (Global.Instance._selectedItem.type)
+            {
+                case PlayerStatsType.Health:
+                    CurrentHealth += Global.Instance._selectedItem.upgradeBonus;
+                    Debug.LogError("CurrentHealth " + CurrentHealth);
+                    break;
+                
+                case PlayerStatsType.Might:
+                    CurrentMight += Global.Instance._selectedItem.upgradeBonus;
+                    Debug.LogError("CurrentMight " + CurrentMight);
+                    break;
+                
+                case PlayerStatsType.Recovery:
+                    CurrentRecovery += Global.Instance._selectedItem.upgradeBonus;
+                    Debug.LogError("CurrentRecovery " + CurrentRecovery);
+                    break;
+                
+                case PlayerStatsType.Speed:
+                    CurrentSpeed += Global.Instance._selectedItem.upgradeBonus;
+                    Debug.LogError("CurrentSpeed " + CurrentSpeed);
+                    break;
+                
+                case PlayerStatsType.ProjectileSpeed:
+                    CurrentProjectTileSpeed += Global.Instance._selectedItem.upgradeBonus;
+                    Debug.LogError("CurrentProjectTileSpeed " + CurrentProjectTileSpeed);
+                    break;
+            }
         }
         #endregion
     }
