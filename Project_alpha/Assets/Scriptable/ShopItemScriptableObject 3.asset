@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7d3b4b325492a469d5abf10f51cdf4, type: 3}
   m_Name: ShopItemScriptableObject 3
   m_EditorClassIdentifier: 
-  title: Slaves
-  info: SomeInfo
-  isBought: 1
+  title: Ivan Mazepa
+  info: Hetman of the Zaporizhzhya Army, head of the Cossack state. Gives 50% projectile
+    speed.
+  isBought: 0
   isSelected: 0
-  image: {fileID: 2800000, guid: a8a818b69cd5759499b152b066dfaf6a, type: 3}
+  image: {fileID: 2800000, guid: b5f7debee4548564bb495c9b66375b20, type: 3}
   price: 1000
   type: 2
-  upgradeBonus: 3
+  upgradeBonus: 0.5

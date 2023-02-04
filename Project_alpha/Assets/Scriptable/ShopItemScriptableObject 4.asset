@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7d3b4b325492a469d5abf10f51cdf4, type: 3}
   m_Name: ShopItemScriptableObject 4
   m_EditorClassIdentifier: 
-  title: Billy
-  info: SomeInfo
+  title: Olga
+  info: Princess of Kyiv. Gives 1 point of recovery.
   isBought: 0
   isSelected: 0
-  image: {fileID: 2800000, guid: dffb41e0776323f4ca0bbf9ba90a7ef2, type: 3}
-  price: 1000
+  image: {fileID: 2800000, guid: 6a9a0261b76408d4396928f4fc300a50, type: 3}
+  price: 3000
   type: 3
-  upgradeBonus: 3
+  upgradeBonus: 1

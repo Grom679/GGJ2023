@@ -12,6 +12,7 @@ public class ShopPanel : MonoBehaviour
     [SerializeField] private GameObject _shopItemPrefab;
     [SerializeField] private RectTransform _shopItemsContent;
     [SerializeField] private ShopConfig _investmentsConfig;
+    [SerializeField] private TMP_Text _coins;
     
     [Header("SelectedObject")] [SerializeField]
     private GameObject _selectedObject;
@@ -35,6 +36,11 @@ public class ShopPanel : MonoBehaviour
         _buyButton.onClick.AddListener(BuyItem);
         OnItemOpened += SelectObject;
         OpenShopPanel();
+    }
+
+    private void Start()
+    {
+        _coins.text = Global.Instance.Money.ToString();
     }
 
     private void OnDestroy()
@@ -82,13 +88,14 @@ public class ShopPanel : MonoBehaviour
     {
         _view.OnBoughtAction?.Invoke();
         _selectedShopItem.isBought = true;
-        Global.Instance.money -= _selectedShopItem.price;
+        Global.Instance.Money -= _selectedShopItem.price;
+        _coins.text = Global.Instance.Money.ToString();
         _selectedObject.SetActive(false);
     }
 
     private bool CheckBuyState(ShopItem item)
     {
-        _isAvailable = Global.Instance.money > item.price;
+        _isAvailable = Global.Instance.Money > item.price;
         return _isAvailable;
     }
 }

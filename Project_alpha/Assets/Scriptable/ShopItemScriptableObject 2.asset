@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7d3b4b325492a469d5abf10f51cdf4, type: 3}
   m_Name: ShopItemScriptableObject 2
   m_EditorClassIdentifier: 
-  title: Ricardo
-  info: SomeInfo
-  isBought: 1
-  isSelected: 1
-  image: {fileID: 2800000, guid: ec5fc1de8061c5f48baf686694bd1db7, type: 3}
-  price: 1000
+  title: Volodymyr the Great
+  info: "Grand Duke of Kyiv (979\u20131015). Baptist of Kyivan Rus. Gives 50% additional
+    damage."
+  isBought: 0
+  isSelected: 0
+  image: {fileID: 2800000, guid: 0c1a1aab12c8f094db5c35c54742d025, type: 3}
+  price: 2500
   type: 1
-  upgradeBonus: 3
+  upgradeBonus: 0.5

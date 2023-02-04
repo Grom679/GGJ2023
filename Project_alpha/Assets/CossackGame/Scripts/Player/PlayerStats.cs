@@ -69,17 +69,19 @@ namespace Player
 
             Instance = this;
 
-            CurrentHealth = _playerData.MaxHealth;
-            CurrentMight = _playerData.Might;
-            CurrentProjectTileSpeed = _playerData.ProjectileSpeed;
-            CurrentRecovery = _playerData.Recovery;
-            CurrentSpeed = _playerData.Speed;
+            Cheats();
+
+            CurrentHealth = _playerData.MaxHealth + AdditionalHealth;
+            CurrentMight = _playerData.Might + CurrentMight;
+            CurrentProjectTileSpeed = _playerData.ProjectileSpeed + CurrentProjectTileSpeed;
+            CurrentRecovery = _playerData.Recovery + CurrentRecovery;
+            CurrentSpeed = _playerData.Speed + CurrentSpeed;
             
             Debug.LogError("CurrentHealth " + CurrentHealth);
             Debug.LogError("CurrentMight " + CurrentMight);
             Debug.LogError("CurrentProjectTileSpeed " + CurrentProjectTileSpeed);
             Debug.LogError("CurrentRecovery " + CurrentRecovery);
-            Debug.LogError("CurrentSpeed " + CurrentHealth);
+            Debug.LogError("CurrentSpeed " + CurrentSpeed);
         }
 
         private void Start()
@@ -226,32 +228,30 @@ namespace Player
         [ContextMenu("Cheats")]
         private void Cheats()
         {
-            switch (Global.Instance._selectedItem.type)
+            if(Global.Instance != null && Global.Instance._selectedItem != null)
             {
-                case PlayerStatsType.Health:
-                    CurrentHealth += Global.Instance._selectedItem.upgradeBonus;
-                    Debug.LogError("CurrentHealth " + CurrentHealth);
-                    break;
-                
-                case PlayerStatsType.Might:
-                    CurrentMight += Global.Instance._selectedItem.upgradeBonus;
-                    Debug.LogError("CurrentMight " + CurrentMight);
-                    break;
-                
-                case PlayerStatsType.Recovery:
-                    CurrentRecovery += Global.Instance._selectedItem.upgradeBonus;
-                    Debug.LogError("CurrentRecovery " + CurrentRecovery);
-                    break;
-                
-                case PlayerStatsType.Speed:
-                    CurrentSpeed += Global.Instance._selectedItem.upgradeBonus;
-                    Debug.LogError("CurrentSpeed " + CurrentSpeed);
-                    break;
-                
-                case PlayerStatsType.ProjectileSpeed:
-                    CurrentProjectTileSpeed += Global.Instance._selectedItem.upgradeBonus;
-                    Debug.LogError("CurrentProjectTileSpeed " + CurrentProjectTileSpeed);
-                    break;
+                switch (Global.Instance._selectedItem.type)
+                {
+                    case PlayerStatsType.Health:
+                        ChangeMaxHealth((PlayerData.MaxHealth + AdditionalHealth) * Global.Instance._selectedItem.upgradeBonus);
+                        break;
+
+                    case PlayerStatsType.Might:
+                        CurrentMight += Global.Instance._selectedItem.upgradeBonus;
+                        break;
+
+                    case PlayerStatsType.Recovery:
+                        CurrentRecovery += Global.Instance._selectedItem.upgradeBonus;
+                        break;
+
+                    case PlayerStatsType.Speed:
+                        ChangeSpeed(PlayerData.Speed * Global.Instance._selectedItem.upgradeBonus);
+                        break;
+
+                    case PlayerStatsType.ProjectileSpeed:
+                        CurrentProjectTileSpeed += Global.Instance._selectedItem.upgradeBonus;
+                        break;
+                }
             }
         }
         #endregion

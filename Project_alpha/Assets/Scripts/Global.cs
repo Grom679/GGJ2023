@@ -5,7 +5,18 @@ using UnityEngine;
 public class Global : MonoBehaviour
 {
     public static Global Instance;
-    public long money = 100000;
+    public float Money
+    {
+        get
+        {
+            return PlayerPrefs.GetFloat("Coins", 0);
+        }
+
+        set
+        {
+            PlayerPrefs.SetFloat("Coins", value);
+        }
+    }
     public ShopConfig _shopConfig;
     public ShopItem _selectedItem;
 

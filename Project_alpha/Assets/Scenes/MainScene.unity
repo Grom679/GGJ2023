@@ -423,6 +423,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3682047301847573646, guid: cf7d938c98d54fb428eaf375eb48f4a2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 578818407d1448049ae9bb6a585fab50, type: 3}
     - target: {fileID: 3713650468389302592, guid: cf7d938c98d54fb428eaf375eb48f4a2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -554,7 +558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587e8b186f302774492801061c021b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 100000
   _shopConfig: {fileID: 11400000, guid: 1e50b1a9ebfa6814a8270751b3d94de8, type: 2}
   _selectedItem: {fileID: 0}
 --- !u!4 &2142299539

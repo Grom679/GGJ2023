@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7d3b4b325492a469d5abf10f51cdf4, type: 3}
   m_Name: ShopItemScriptableObject 1
   m_EditorClassIdentifier: 
-  title: Van
-  info: SomeInfo
-  isBought: 1
+  title: Yaroslav the Wise
+  info: "Grand Duke of Kyiv (1015\u20131018, 1019\u20131054). Gives 50% additional
+    health."
+  isBought: 0
   isSelected: 0
-  image: {fileID: 2800000, guid: a0713f3a233f2b1428368709bca3830b, type: 3}
-  price: 100
+  image: {fileID: 2800000, guid: a3f108bf712636746bed1e4d63f90824, type: 3}
+  price: 2000
   type: 0
-  upgradeBonus: 3
+  upgradeBonus: 0.3

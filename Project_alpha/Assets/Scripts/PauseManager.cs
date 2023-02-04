@@ -16,6 +16,7 @@ public class PauseManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject _pausePrefab;
+    [SerializeField] private Canvas _default;
 
     private void Awake()
     {
@@ -33,7 +34,17 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !_isPaused)
         {
-            Canvas findCanvas = FindObjectOfType<Canvas>();
+            Canvas findCanvas = null;
+
+            if (_default != null)
+            {
+                findCanvas = _default;
+            }
+            else
+            {
+                findCanvas = FindObjectOfType<Canvas>();
+            }
+
             if (findCanvas != null)
             {
                 Instantiate(_pausePrefab, findCanvas.transform);
