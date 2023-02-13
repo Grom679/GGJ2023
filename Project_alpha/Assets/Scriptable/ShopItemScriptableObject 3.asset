@@ -17,7 +17,7 @@ MonoBehaviour:
     speed.
   isBought: 0
   isSelected: 0
-  image: {fileID: 2800000, guid: b5f7debee4548564bb495c9b66375b20, type: 3}
+  image: {fileID: 2800000, guid: 6615fddae190e5742a5baa9547e1ef26, type: 3}
   price: 1000
   type: 2
   upgradeBonus: 0.5

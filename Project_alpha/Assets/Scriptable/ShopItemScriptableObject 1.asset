@@ -17,7 +17,7 @@ MonoBehaviour:
     health."
   isBought: 0
   isSelected: 0
-  image: {fileID: 2800000, guid: a3f108bf712636746bed1e4d63f90824, type: 3}
+  image: {fileID: 2800000, guid: c2650030cfc800f408244b53921cb8fb, type: 3}
   price: 2000
   type: 0
   upgradeBonus: 0.3

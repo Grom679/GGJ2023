@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ShopItemScriptableObject 4
   m_EditorClassIdentifier: 
   title: Olga
-  info: Princess of Kyiv. Gives 1 point of recovery.
+  info: Princess of Kyiv. Gives 3 point of recovery.
   isBought: 0
   isSelected: 0
-  image: {fileID: 2800000, guid: 6a9a0261b76408d4396928f4fc300a50, type: 3}
-  price: 3000
+  image: {fileID: 2800000, guid: 29829cbc9e65c7544bcdaf74f04609f5, type: 3}
+  price: 50
   type: 3
-  upgradeBonus: 1
+  upgradeBonus: 3
